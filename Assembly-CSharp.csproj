@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\CharacterContrller2D.cs" />
+     <Compile Include="Assets\Code\CharacterController2D.cs" />
      <Compile Include="Assets\Code\ControllerParameters2D.cs" />
      <Compile Include="Assets\Code\ControllerState2D.cs" />
      <Compile Include="Assets\Code\FollowPath.cs" />
