@@ -1,6 +1,14 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CharacterContrller2D.cs">
+    <Files>
+      <File FileName="Assets\Code\PathDefinition.cs" Line="40" Column="4" />
+      <File FileName="Assets\Code\FollowPath.cs" Line="51" Column="1" />
+      <File FileName="Assets\Code\ControllerParameters2D.cs" Line="23" Column="36" />
+      <File FileName="Assets\Code\ControllerState2D.cs" Line="31" Column="10" />
+      <File FileName="Assets\Code\CharacterContrller2D.cs" Line="63" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
