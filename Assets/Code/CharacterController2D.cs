@@ -119,8 +119,8 @@ public class CharacterController2D : MonoBehaviour {
 
             MoveVertically(ref deltaMovement);
 
-            //CorrectHorizontalPlacement(ref deltaMovement, true);
-            //CorrectHorizontalPlacement(ref deltaMovement, false);
+            CorrectHorizontalPlacement(ref deltaMovement, true);
+            CorrectHorizontalPlacement(ref deltaMovement, false);
         }
 
         _transform.Translate(deltaMovement, Space.World); // move the player to the next position after checking the previous conditions
@@ -176,6 +176,34 @@ public class CharacterController2D : MonoBehaviour {
             PlatformVelocity = Vector3.zero;
 
         StandingOn = null;
+    }
+
+    private void CorrectHorizontalPlacement(ref Vector2 deltaMovement, bool isRight)
+    {
+        var halfWidth = (_boxCollider.size.x * _localScale.x) / 2f;
+        var rayOrigin = isRight ? _raycastBottomRight : _raycastBottomLeft;
+
+        if (isRight)
+            rayOrigin.x -= (halfWidth - SkinWidth);
+        else
+            rayOrigin.x += (halfWidth - SkinWidth);
+
+        var rayDirection = isRight ? Vector2.right : -Vector2.right;
+        var offset = 0f;
+
+        for (var i = 1; i < TotalHorizontalRays - 1; i++)
+        {
+            var rayVector = new Vector2(deltaMovement.x + rayOrigin.x, deltaMovement.y + rayOrigin.y + (i * _verticalDistanceBetweenRays));
+            Debug.DrawRay(rayVector, rayDirection * halfWidth, isRight ? Color.cyan : Color.magenta);
+
+            var raycastHit = Physics2D.Raycast(rayVector, rayDirection, halfWidth, PlatformMask);
+            if (!raycastHit)
+                continue;
+
+            offset = isRight ? ((raycastHit.point.x - _transform.position.x) - halfWidth) : (halfWidth - (_transform.position.x - raycastHit.point.x));
+        }
+
+        deltaMovement.x += offset;
     }
 
     /* 3 potential ray cast origins of the box, 3 vectors to cast rays*/
