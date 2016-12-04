@@ -17,7 +17,7 @@ public class ControllerParameters2D
     [Range(0, 90)]
     public float SlopeLimit = 30;
 
-    public float Gravity = -25f;
+    public float Gravity = -5f;
 
     public JumpBehavior JumpRestrictions;
 
