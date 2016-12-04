@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a5eef65b4791ae24fa47b004d8f918bd
-timeCreated: 1480804207
+timeCreated: 1480842501
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -12,7 +12,7 @@ TextureImporter:
     21300010: Grass 2
     21300012: Star
     21300014: Upper Cave
-    21300016: Dirt
+    21300016: Platform
     21300018: Lower Cave
     21300020: Tree
     21300022: Tube
@@ -420,21 +420,21 @@ TextureImporter:
         - {x: 73, y: -391}
         - {x: 78, y: -309}
         - {x: 82, y: -244}
-    - name: Dirt
+    - name: Platform
       rect:
         serializedVersion: 2
         x: 1664
         y: 1444
         width: 384
         height: 92
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 0, y: 92}
-        - {x: 0, y: 0}
-        - {x: 384, y: 0}
-        - {x: 384, y: 92}
+      - - {x: -192, y: 46}
+        - {x: -192, y: -46}
+        - {x: 192, y: -46}
+        - {x: 192, y: 46}
     - name: Lower Cave
       rect:
         serializedVersion: 2
