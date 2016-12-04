@@ -15,18 +15,23 @@ public class CharacterController2D : MonoBehaviour {
     public ControllerState2D State { get; private set; }
     public Vector2 Velocity { get { return _velocity; } }
     public bool CanJump
-    { get
+    {
+        get
         {
             if (Parameters.JumpRestrictions == ControllerParameters2D.JumpBehavior.CanJumpAnywhere)
                 return _jumpIn <= 0;
             if (Parameters.JumpRestrictions == ControllerParameters2D.JumpBehavior.CanJumpOnGround)
                 return State.IsGrounded;
+
             return false;
         }
     }
     private bool HandleCollisions { get; set; }
     public ControllerParameters2D Parameters { get { return _overrideParameters ?? DefaultParameters; } }
     public GameObject StandingOn { get; private set; }
+    public Vector3 PlatformVelocity { get; private set; }
+
+
 
     private Vector2 _velocity;
     private Transform _transform;
@@ -34,8 +39,10 @@ public class CharacterController2D : MonoBehaviour {
     private BoxCollider2D _boxCollider;
     private ControllerParameters2D _overrideParameters;
     private float _jumpIn;
+    private GameObject _lastStandingOn;
 
-    private Vector3 
+    private Vector3 _activeGlobalPlatformPoint, _activeLocalPlatformPoint;
+    private Vector3
         _raycastTopLeft,
         _raycastBottomLeft,
         _raycastBottomRight;
@@ -48,7 +55,7 @@ public class CharacterController2D : MonoBehaviour {
     {
         State = new ControllerState2D();
         HandleCollisions = true;
-        
+
         _transform = transform;
         _localScale = transform.localScale;
         _boxCollider = GetComponent<BoxCollider2D>();
@@ -97,19 +104,23 @@ public class CharacterController2D : MonoBehaviour {
     private void Move(Vector2 deltaMovement)
     {
         var wasGrounded = State.IsCollidingBelow;
-        State.Reset(); // Set all booleans to false and angle to 0
+        State.Reset();
+
         if (HandleCollisions)
         {
             HandlePlatforms();
-            CalculateRayOrigins(); // every time we move ray origins are changed
+            CalculateRayOrigins();
 
-            if (deltaMovement.y < 0 && wasGrounded) // they are moving down
+            if (deltaMovement.y < 0 && wasGrounded)
                 HandleVerticalSlope(ref deltaMovement);
 
             if (Mathf.Abs(deltaMovement.x) > .001f)
                 MoveHorizontally(ref deltaMovement);
 
             MoveVertically(ref deltaMovement);
+
+            //CorrectHorizontalPlacement(ref deltaMovement, true);
+            //CorrectHorizontalPlacement(ref deltaMovement, false);
         }
 
         _transform.Translate(deltaMovement, Space.World); // move the player to the next position after checking the previous conditions
@@ -124,10 +135,47 @@ public class CharacterController2D : MonoBehaviour {
 
         if (State.IsMovingUpSlope)
             _velocity.y = 0;
-    }
+
+        if (StandingOn != null)
+        {
+            _activeGlobalPlatformPoint = transform.position;
+            _activeLocalPlatformPoint = StandingOn.transform.InverseTransformPoint(transform.position);
+
+            if (_lastStandingOn != StandingOn)
+            {
+                if (_lastStandingOn != null)
+                    _lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
+
+                StandingOn.SendMessage("ControllerEnter2D", this, SendMessageOptions.DontRequireReceiver);
+                _lastStandingOn = StandingOn;
+            }
+            else if (StandingOn != null)
+                StandingOn.SendMessage("ControllerStay2D", this, SendMessageOptions.DontRequireReceiver);
+        }
+        else if (_lastStandingOn != null)
+        {
+            _lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
+            _lastStandingOn = null;
+        }
+
+    } 
 
     private void HandlePlatforms()
     {
+        if (StandingOn != null)
+        {
+            var newGlobalPlatformPoint = StandingOn.transform.TransformPoint(_activeLocalPlatformPoint);
+            var moveDistance = newGlobalPlatformPoint - _activeGlobalPlatformPoint;
+
+            if (moveDistance != Vector3.zero)
+                transform.Translate(moveDistance, Space.World);
+
+            PlatformVelocity = (newGlobalPlatformPoint - _activeGlobalPlatformPoint) / Time.deltaTime;
+        }
+        else
+            PlatformVelocity = Vector3.zero;
+
+        StandingOn = null;
     }
 
     /* 3 potential ray cast origins of the box, 3 vectors to cast rays*/
