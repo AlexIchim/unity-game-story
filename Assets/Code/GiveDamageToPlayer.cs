@@ -29,7 +29,7 @@ public class GiveDamageToPlayer : MonoBehaviour
         /* Total velocity, ours + object, constraint the total knockback in x by 10-20, and on y by 0-15. */
         controller.SetForce(new Vector2(
                 -1 * Mathf.Sign(totalVelocity.x) * Mathf.Clamp(Mathf.Abs(totalVelocity.x) * 6, 10, 40),
-                -1 * Mathf.Sign(totalVelocity.y) * Mathf.Clamp(Mathf.Abs(totalVelocity.y) * 2, 0, 15)
+                -1 * Mathf.Sign(totalVelocity.y) * Mathf.Clamp(Mathf.Abs(totalVelocity.y) * 6, 5, 30)
             ));
     }
 }
