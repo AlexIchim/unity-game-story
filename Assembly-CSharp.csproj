@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\BackgroundParallax.cs" />
      <Compile Include="Assets\Code\CameraController.cs" />
      <Compile Include="Assets\Code\CharacterController2D.cs" />
      <Compile Include="Assets\Code\ControllerParameters2D.cs" />
