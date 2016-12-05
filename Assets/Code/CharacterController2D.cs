@@ -362,9 +362,19 @@ public class CharacterController2D : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        var parameters = other.gameObject.GetComponent<ControllerPhsyicsVolume2D>();
+        if (parameters == null)
+            return;
+
+        _overrideParameters = parameters.Parameters;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        var parameters = other.gameObject.GetComponent<ControllerPhsyicsVolume2D>();
+        if (parameters == null)
+            return;
+
+        _overrideParameters = null;
     }
 }
