@@ -17,6 +17,9 @@ public class PointStar : MonoBehaviour, IPlayerRespawnListener
         Instantiate(Effect, transform.position, transform.rotation);
 
         gameObject.SetActive(false);
+
+        //Show floating text after collecting stars
+        FloatingText.Show(string.Format("+{0}!", PointsToAdd), "PointStarText", new FromWorldPointTextPositioner(Camera.main, transform.position, 1f, 2));
     }
 
     public void OnPlayerRespawnInThisCheckpoint(Checkpoint checkpoint, Player player)
