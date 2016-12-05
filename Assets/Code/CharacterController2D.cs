@@ -26,7 +26,7 @@ public class CharacterController2D : MonoBehaviour {
             return false;
         }
     }
-    private bool HandleCollisions { get; set; }
+    public bool HandleCollisions { get; set; }
     public ControllerParameters2D Parameters { get { return _overrideParameters ?? DefaultParameters; } }
     public GameObject StandingOn { get; private set; }
     public Vector3 PlatformVelocity { get; private set; }
