@@ -13,11 +13,29 @@ public class LevelManager : MonoBehaviour
     public Player Player { get; private set; }
     public CameraController Camera { get; private set; }
 
+    /* Time since we started game. */
+    public TimeSpan RunningTime { get { return DateTime.UtcNow - _started; } }
+
+    public int CurrentTimeBonus
+    {
+        get
+        {
+            var secondDifference = (int)(BonusCutoffSeconds - RunningTime.TotalSeconds);
+            return Mathf.Max(0, secondDifference) * BonsuSecondMultiplier;
+        }
+    }
+
+
 
     private List<Checkpoint> _checkpoints;
     private int _currentCheckpointIndex;
+    private DateTime _started;
+    private int _savePoints;
+
 
     public Checkpoint DebugSpawn;
+    public int BonusCutoffSeconds;
+    public int BonsuSecondMultiplier;
 
     public void Awake()
     {
@@ -26,6 +44,7 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
+        _started = DateTime.UtcNow;
         _checkpoints = FindObjectsOfType<Checkpoint>().OrderBy(t=>t.transform.position.x).ToList();
         _currentCheckpointIndex = _checkpoints.Count > 0 ? 0 : -1;
 
@@ -59,6 +78,9 @@ public class LevelManager : MonoBehaviour
         _checkpoints[_currentCheckpointIndex].PlayerLeftCheckpoint();
 
         //todo : TIME BONUS
+        GameManager.Instance.AddPoints(CurrentTimeBonus);
+        _savePoints = GameManager.Instance.Points;
+        _started = DateTime.UtcNow;
     }
 
     public void KillPlayer()
@@ -78,6 +100,8 @@ public class LevelManager : MonoBehaviour
             _checkpoints[_currentCheckpointIndex].SpawnPlayer(Player);
 
         //TOD: points
+        _started = DateTime.UtcNow;
+        GameManager.Instance.ResetPoints(_savePoints);
     }
 
 }
