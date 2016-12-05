@@ -55,6 +55,7 @@
      <Compile Include="Assets\Code\JumpPlatform.cs" />
      <Compile Include="Assets\Code\PathDefinition.cs" />
      <Compile Include="Assets\Code\Player.cs" />
+     <Compile Include="Assets\Code\SortParticleSystem.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
