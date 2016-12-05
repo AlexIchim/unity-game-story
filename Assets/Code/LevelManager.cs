@@ -51,6 +51,20 @@ public class LevelManager : MonoBehaviour
         Player = FindObjectOfType<Player>();
         Camera = FindObjectOfType<CameraController>();
 
+        /*Handling stars spawning at start of game. */
+        var listeners = FindObjectsOfType<MonoBehaviour>().OfType<IPlayerRespawnListener>();
+        foreach (var listener in listeners)
+        {
+            for (var i = _checkpoints.Count - 1; i >= 0; i--)
+            {
+                var distance = ((MonoBehaviour)listener).transform.position.x - _checkpoints[i].transform.position.x;
+                if (distance < 0)
+                    continue;
+
+                _checkpoints[i].AssignObjectToCheckpoint(listener);
+                break;
+            }
+        }
 #if UNITY_EDITOR
         /* If we set a debug spawn this will spawn the player, else the checkpoint.*/
         if (DebugSpawn != null)
@@ -81,6 +95,8 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.AddPoints(CurrentTimeBonus);
         _savePoints = GameManager.Instance.Points;
         _started = DateTime.UtcNow;
+
+        
     }
 
     public void KillPlayer()
