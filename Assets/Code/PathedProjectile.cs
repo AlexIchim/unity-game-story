@@ -4,7 +4,7 @@ public class PathedProjectile : MonoBehaviour
 {
     private Transform _destination;
     private float _speed;
-
+    public GameObject DestroyEffect;
 
     public void Initialize(Transform destination, float speed)
     {
@@ -19,6 +19,9 @@ public class PathedProjectile : MonoBehaviour
         var distanceSquared = (_destination.transform.position - transform.position).sqrMagnitude;
         if (distanceSquared > .01f * .01f)
             return;
+
+        if (DestroyEffect != null)
+            Instantiate(DestroyEffect, transform.position, transform.rotation);
 
         Destroy(gameObject);
     }

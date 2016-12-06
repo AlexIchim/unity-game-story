@@ -9,6 +9,7 @@ class PathProjectileSpawner : MonoBehaviour
     public float Speed;
     public float FireRate;
 
+    public GameObject SpawnEffect;
     public float _nextShotInSeconds;
     public void Start()
     {
@@ -23,6 +24,9 @@ class PathProjectileSpawner : MonoBehaviour
         _nextShotInSeconds = FireRate;
         var projectile = (PathedProjectile)Instantiate(Projectile, transform.position, transform.rotation);
         projectile.Initialize(Destination, Speed);
+
+        if (SpawnEffect != null)
+            Instantiate(SpawnEffect, transform.position, transform.rotation);
     }
 
     public void OnDrawGizmos()
