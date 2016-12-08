@@ -54,6 +54,7 @@
      <Compile Include="Assets\Code\ControllerParameters2D.cs" />
      <Compile Include="Assets\Code\ControllerPhsyicsVolume2D.cs" />
      <Compile Include="Assets\Code\ControllerState2D.cs" />
+     <Compile Include="Assets\Code\FinishLevel.cs" />
      <Compile Include="Assets\Code\FloatingText.cs" />
      <Compile Include="Assets\Code\FollowObject.cs" />
      <Compile Include="Assets\Code\FollowPath.cs" />
@@ -79,6 +80,7 @@
      <Compile Include="Assets\Code\SimpleEnemyAi.cs" />
      <Compile Include="Assets\Code\SimpleProjectile.cs" />
      <Compile Include="Assets\Code\SortParticleSystem.cs" />
+     <Compile Include="Assets\Code\StartScreen.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
