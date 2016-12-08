@@ -11,6 +11,9 @@ class PathProjectileSpawner : MonoBehaviour
 
     public GameObject SpawnEffect;
     public float _nextShotInSeconds;
+
+    public AudioClip SpawnProjectileSound;
+
     public void Start()
     {
         _nextShotInSeconds = FireRate;
@@ -27,6 +30,9 @@ class PathProjectileSpawner : MonoBehaviour
 
         if (SpawnEffect != null)
             Instantiate(SpawnEffect, transform.position, transform.rotation);
+
+        if (SpawnProjectileSound != null)
+            AudioSource.PlayClipAtPoint(SpawnProjectileSound, transform.position);
     }
 
     public void OnDrawGizmos()
