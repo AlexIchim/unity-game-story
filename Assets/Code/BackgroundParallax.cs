@@ -18,6 +18,7 @@ public class BackgroundParallax : MonoBehaviour
 
     public void Update()
     {
+        /*
         var parallax = (_lastPosition.x - transform.position.x) * ParallaxScale;
 
         for (var i = 0; i < Backgrounds.Length; i++)
@@ -28,6 +29,7 @@ public class BackgroundParallax : MonoBehaviour
 
         }
         _lastPosition = transform.position;
+        */
     }
 
 }

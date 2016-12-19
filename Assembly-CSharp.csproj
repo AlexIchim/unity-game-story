@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{355F9A81-A194-5EA4-4661-4F2856FABA23}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -45,48 +46,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Code\AutoDestroyParticleSystem.cs" />
-     <Compile Include="Assets\Code\BackgroundParallax.cs" />
-     <Compile Include="Assets\Code\CameraController.cs" />
-     <Compile Include="Assets\Code\CenteredTextPositioner.cs" />
-     <Compile Include="Assets\Code\CharacterController2D.cs" />
-     <Compile Include="Assets\Code\Checkpoint.cs" />
-     <Compile Include="Assets\Code\ControllerParameters2D.cs" />
-     <Compile Include="Assets\Code\ControllerPhsyicsVolume2D.cs" />
-     <Compile Include="Assets\Code\ControllerState2D.cs" />
-     <Compile Include="Assets\Code\FinishLevel.cs" />
-     <Compile Include="Assets\Code\FloatingText.cs" />
-     <Compile Include="Assets\Code\FollowObject.cs" />
-     <Compile Include="Assets\Code\FollowPath.cs" />
-     <Compile Include="Assets\Code\FromWorldPointTextPositioner.cs" />
-     <Compile Include="Assets\Code\GameHud.cs" />
-     <Compile Include="Assets\Code\GameManager.cs" />
-     <Compile Include="Assets\Code\GiveDamageToPlayer.cs" />
-     <Compile Include="Assets\Code\GiveHealth.cs" />
-     <Compile Include="Assets\Code\HealthBar.cs" />
-     <Compile Include="Assets\Code\IFloatingTextPositioner.cs" />
-     <Compile Include="Assets\Code\IPlayerRespawnListener.cs" />
-     <Compile Include="Assets\Code\ITakeDamage.cs" />
-     <Compile Include="Assets\Code\InstaKill.cs" />
-     <Compile Include="Assets\Code\JumpPlatform.cs" />
-     <Compile Include="Assets\Code\LevelManager.cs" />
-     <Compile Include="Assets\Code\PathDefinition.cs" />
-     <Compile Include="Assets\Code\PathProjectileSpawner.cs" />
-     <Compile Include="Assets\Code\PathedProjectile.cs" />
-     <Compile Include="Assets\Code\Player.cs" />
-     <Compile Include="Assets\Code\PlayerBounds.cs" />
-     <Compile Include="Assets\Code\PointStar.cs" />
-     <Compile Include="Assets\Code\Projectile.cs" />
-     <Compile Include="Assets\Code\SimpleEnemyAi.cs" />
-     <Compile Include="Assets\Code\SimpleProjectile.cs" />
-     <Compile Include="Assets\Code\SortParticleSystem.cs" />
-     <Compile Include="Assets\Code\StartScreen.cs" />
- <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\Code\AutoDestroyParticleSystem.cs" />
+    <Compile Include="Assets\Code\BackgroundParallax.cs" />
+    <Compile Include="Assets\Code\CameraController.cs" />
+    <Compile Include="Assets\Code\CenteredTextPositioner.cs" />
+    <Compile Include="Assets\Code\CharacterController2D.cs" />
+    <Compile Include="Assets\Code\Checkpoint.cs" />
+    <Compile Include="Assets\Code\ControllerParameters2D.cs" />
+    <Compile Include="Assets\Code\ControllerPhsyicsVolume2D.cs" />
+    <Compile Include="Assets\Code\ControllerState2D.cs" />
+    <Compile Include="Assets\Code\FinishLevel.cs" />
+    <Compile Include="Assets\Code\FloatingText.cs" />
+    <Compile Include="Assets\Code\FollowObject.cs" />
+    <Compile Include="Assets\Code\FollowPath.cs" />
+    <Compile Include="Assets\Code\FromWorldPointTextPositioner.cs" />
+    <Compile Include="Assets\Code\GameHud.cs" />
+    <Compile Include="Assets\Code\GameManager.cs" />
+    <Compile Include="Assets\Code\GiveDamageToPlayer.cs" />
+    <Compile Include="Assets\Code\GiveHealth.cs" />
+    <Compile Include="Assets\Code\HealthBar.cs" />
+    <Compile Include="Assets\Code\IFloatingTextPositioner.cs" />
+    <Compile Include="Assets\Code\IPlayerRespawnListener.cs" />
+    <Compile Include="Assets\Code\ITakeDamage.cs" />
+    <Compile Include="Assets\Code\InstaKill.cs" />
+    <Compile Include="Assets\Code\JumpPlatform.cs" />
+    <Compile Include="Assets\Code\LevelManager.cs" />
+    <Compile Include="Assets\Code\PathDefinition.cs" />
+    <Compile Include="Assets\Code\PathProjectileSpawner.cs" />
+    <Compile Include="Assets\Code\PathedProjectile.cs" />
+    <Compile Include="Assets\Code\Player.cs" />
+    <Compile Include="Assets\Code\PlayerBounds.cs" />
+    <Compile Include="Assets\Code\PointStar.cs" />
+    <Compile Include="Assets\Code\Projectile.cs" />
+    <Compile Include="Assets\Code\SimpleEnemyAi.cs" />
+    <Compile Include="Assets\Code\SimpleProjectile.cs" />
+    <Compile Include="Assets\Code\SortParticleSystem.cs" />
+    <Compile Include="Assets\Code\StartScreen.cs" />
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -96,5 +97,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>
